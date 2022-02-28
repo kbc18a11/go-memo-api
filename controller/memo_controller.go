@@ -3,16 +3,13 @@ package controller
 import (
 	"net/http"
 
+	"go-message-api/model"
+
 	"github.com/labstack/echo/v4"
 )
 
-type Memo struct {
-	Id      int    `json:"id"`
-	Content string `json:"content"`
-}
-
 func CreateMemo(c echo.Context) error {
-	memo := &Memo{
+	memo := &model.Memo{
 		Id:      1,
 		Content: "ああああ",
 	}
