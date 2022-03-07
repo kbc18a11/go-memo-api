@@ -10,7 +10,6 @@ import (
 
 func CreateMemo(c echo.Context) error {
 	memo := &model.Memo{
-		Id:      1,
 		Content: "ああああ",
 	}
 

@@ -1,6 +1,9 @@
 package model
 
+import "gorm.io/gorm"
+
 type Memo struct {
-	Id      int    `json:"id"`
+	gorm.Model
 	Content string `json:"content"`
+	User    User
 }
