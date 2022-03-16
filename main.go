@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"go-message-api/config"
 	"go-message-api/controller"
@@ -10,6 +11,16 @@ import (
 )
 
 func main() {
+	isBatch := flag.Bool("isBatch", false, "バッチの実行について")
+	batchType := flag.String("batchType", "", "実行するバッチの種類")
+	flag.Parse()
+
+	if *isBatch {
+		// バッチ処理である場合
+		doBatch(*batchType)
+		return
+	}
+
 	e := echo.New()
 
 	err := config.SetUp()
@@ -24,4 +35,18 @@ func main() {
 	})
 	e.POST("/memo", controller.CreateMemo)
 	e.Logger.Fatal(e.Start(":1323"))
+}
+
+/*
+バッチの実行
+*/
+func doBatch(batchType string) {
+	switch batchType {
+	case "migration":
+		fmt.Println(batchType)
+		break
+
+	default:
+		fmt.Errorf("存在しないバッチです。")
+	}
 }

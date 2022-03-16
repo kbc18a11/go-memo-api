@@ -4,6 +4,6 @@ import "gorm.io/gorm"
 
 type Memo struct {
 	gorm.Model
-	Content string `json:"content"`
+	Content string
 	User    User
 }
